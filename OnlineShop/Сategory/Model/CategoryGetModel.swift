@@ -1,0 +1,62 @@
+//
+//  CategoryGetModel.swift
+//  OnlineShop
+//
+//  Created by Андрей Лапин on 13.02.2021.
+//
+
+import Foundation
+
+struct CategoryGetModel {
+    
+    var categories: [Category] = getCategories()
+    
+    
+    static func getCategories() -> [Category] {
+        
+        typealias categoriesTypealias = [String: CategoryValue]
+        
+        var getCategories: [Category] = []
+        
+        let urlString = "https://blackstarshop.ru/index.php?route=api/v1/categories"
+        if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            let _ = URLSession.shared.dataTask(with: request) { data, _, _ in
+                guard let data = data else {
+                    print("data is nil")
+                    return
+                }
+                do {
+                    
+                    let json = try JSONDecoder().decode(categoriesTypealias.self, from: data)
+                    for main in json {
+                        if !main.value.image.isEmpty,
+                           !main.value.name.isEmpty,
+                           !main.value.subcategories.isEmpty {
+                            
+                            let category = Category(nameString: main.value.name, imageString: main.value.image, subCategories: main.value.subcategories)
+                            getCategories.append(category)
+                            
+                        }
+                    }
+                } catch let error {
+                    print(error)
+                }
+                
+            }.resume()
+            
+        } else {
+            print("URL IS NIL")
+        }
+        return getCategories
+    }
+    
+
+    
+    struct Category {
+        let nameString: String
+        let imageString: String
+        let subCategories: [Subcategory]
+    }
+    
+}
