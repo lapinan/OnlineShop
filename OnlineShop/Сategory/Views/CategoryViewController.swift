@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import ProgressHUD
 
 class CategoryViewController: UIViewController {
     var viewModel = CategoryViewModel()
@@ -42,8 +43,14 @@ class CategoryViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.getCategories()
+        ProgressHUD.dismiss()
+        if !isShowed {
+            viewModel.getCategories()
+            isShowed = true
+        }
     }
+    
+    var isShowed = false
     
     //MARK: Setups
     private func setupSuperView() {
