@@ -18,7 +18,9 @@ class CategoryViewModel {
     
     func updateCategories() {
         model.getCategories {
-            print(self.categories)
+            
+            print(self.model.categories)
+            
             self.categoryTableView?.reloadData()
         }
     }
