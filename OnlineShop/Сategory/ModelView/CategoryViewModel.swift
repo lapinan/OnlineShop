@@ -6,11 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 class CategoryViewModel {
-    private let model = CategoryGetModel()
+    private var model = CategoryGetModel()
+    
+    
+    weak var categoryTableView: UITableView?
 
-        
+    var categories: [CategoryGetModel.Category] { return model.categories }
+    
+    func updateCategories() {
+        model.getCategories {
+            print(self.categories)
+            self.categoryTableView?.reloadData()
+        }
+    }
+    
     //MARK: Intent(s)
     func showNextController() -> SubCategoryViewController {
        return model.showSubCategories()

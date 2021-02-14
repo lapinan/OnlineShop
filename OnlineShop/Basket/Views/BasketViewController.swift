@@ -27,6 +27,7 @@ class BasketViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
         button.setTitle("Оформить заказ", for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 1)
         return button
     }()
     private let fullPriceView: UIView = {

@@ -9,7 +9,9 @@ import Foundation
 
 struct CategoryGetModel {
     
-    static func getCategories(completion: @escaping () -> () ) {
+    var categories: [Category] = []
+    
+    mutating func getCategories(completion: @escaping () -> () ) {
         
         typealias categoriesTypealias = [String: CategoryValue]
         
@@ -44,7 +46,7 @@ struct CategoryGetModel {
                 }
                 
             }.resume()
-            
+            categories = getCategories
         } else {
             print("URL IS NIL")
         }

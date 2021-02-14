@@ -26,6 +26,7 @@ class BasketTableViewCell: UITableViewCell {
         label.minimumScaleFactor = 0.1
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         return label
     }()
@@ -39,6 +40,7 @@ class BasketTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.minimumScaleFactor = 0.1
+        label.font = .systemFont(ofSize: 11)
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textColor = UIColor(red: 0.62, green: 0.62, blue: 0.62, alpha: 1)
@@ -50,6 +52,7 @@ class BasketTableViewCell: UITableViewCell {
         label.minimumScaleFactor = 0.1
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 11)
         label.textColor = UIColor(red: 0.62, green: 0.62, blue: 0.62, alpha: 1)
         return label
     }()
@@ -60,6 +63,7 @@ class BasketTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textColor = .black
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     

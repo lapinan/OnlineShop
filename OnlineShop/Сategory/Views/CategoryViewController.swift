@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class CategoryViewController: UIViewController {
-    let viewModel = CategoryViewModel()
+    var viewModel = CategoryViewModel()
 
     
     //MARK: Views
@@ -29,9 +29,10 @@ class CategoryViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.categoryTableView = categoryTableView
         
-        
-        
+        viewModel.updateCategories()
+        print(viewModel.categories)
         //setups
         setupSuperView()
         setupNavBar()
