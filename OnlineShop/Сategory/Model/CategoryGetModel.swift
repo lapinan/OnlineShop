@@ -9,7 +9,7 @@ import Foundation
 
 struct CategoryGetModel {
     
-    func getCategories(completion: @escaping ([Category]) -> () ) {
+    static func getCategories(completion: @escaping () -> () ) {
         
         typealias categoriesTypealias = [String: CategoryValue]
         
@@ -37,7 +37,7 @@ struct CategoryGetModel {
                         }
                     }
                     DispatchQueue.main.async {
-                        completion(getCategories)
+                        completion()
                     }
                 } catch let error {
                     print(error)

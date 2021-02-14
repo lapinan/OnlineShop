@@ -18,6 +18,7 @@ class BasketViewController: UIViewController {
         table.dataSource = self
         table.backgroundColor = .white
         table.separatorInset = .zero
+        table.register(BasketTableViewCell.self, forCellReuseIdentifier: BasketTableViewCell.id)
         table.rowHeight = 96
         return table
     }()
@@ -146,10 +147,20 @@ class BasketViewController: UIViewController {
 //MARK: DataSource
 extension BasketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.id) as? BasketTableViewCell {
+            
+            cell.productImageView.backgroundColor = .red
+            cell.productNameLabel.text = "test product name"
+            cell.productSizeLabel.text = "Размер: S"
+            cell.productColorLabel.text = "Цвет: белый"
+            cell.productPriceLabel.text = "2000руб."
+            
+            return cell
+        }
         return UITableViewCell()
     }
 }
