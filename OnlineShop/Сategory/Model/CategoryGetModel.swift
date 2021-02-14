@@ -11,7 +11,7 @@ struct CategoryGetModel {
     
     var categories: [Category] = []
     
-    mutating func getCategories(completion: @escaping () -> () ) {
+    mutating func getCategories(completion: @escaping ([Category]) -> () ) {
         
         typealias categoriesTypealias = [String: CategoryValue]
         
@@ -39,14 +39,14 @@ struct CategoryGetModel {
                         }
                     }
                     DispatchQueue.main.async {
-                        completion()
+                        completion(getCategories)
                     }
                 } catch let error {
                     print(error)
                 }
                 
             }.resume()
-            categories = getCategories
+
         } else {
             print("URL IS NIL")
         }

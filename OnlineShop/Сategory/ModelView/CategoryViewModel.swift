@@ -17,9 +17,9 @@ class CategoryViewModel {
     var categories: [CategoryGetModel.Category] { return model.categories }
     
     func updateCategories() {
-        model.getCategories {
+        model.getCategories { array in
             
-            print(self.model.categories)
+            print(array)
             
             self.categoryTableView?.reloadData()
         }
