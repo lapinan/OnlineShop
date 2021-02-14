@@ -8,9 +8,10 @@
 import Foundation
 
 class CategoryViewModel {
-    let model = CategoryGetModel()
-    
-    var categories: [CategoryGetModel.Category] { model.categories }
-    
+    private let model = CategoryGetModel()
+        
     //MARK: Intent(s)
+    func showNextController() -> SubCategoryViewController {
+       return model.showSubCategories()
+    }
 }

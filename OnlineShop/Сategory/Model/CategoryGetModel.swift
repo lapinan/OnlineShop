@@ -9,10 +9,7 @@ import Foundation
 
 struct CategoryGetModel {
     
-    var categories: [Category] = getCategories()
-    
-    
-    static func getCategories() -> [Category] {
+    func getCategories(completion: @escaping ([Category]) -> () ) {
         
         typealias categoriesTypealias = [String: CategoryValue]
         
@@ -39,6 +36,9 @@ struct CategoryGetModel {
                             
                         }
                     }
+                    DispatchQueue.main.async {
+                        completion(getCategories)
+                    }
                 } catch let error {
                     print(error)
                 }
@@ -48,10 +48,12 @@ struct CategoryGetModel {
         } else {
             print("URL IS NIL")
         }
-        return getCategories
     }
     
-
+    func showSubCategories() -> SubCategoryViewController {
+        let vc = SubCategoryViewController()        
+        return vc
+    }
     
     struct Category {
         let nameString: String

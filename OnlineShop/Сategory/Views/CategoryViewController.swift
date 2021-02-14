@@ -13,11 +13,14 @@ class CategoryViewController: UIViewController {
 
     
     //MARK: Views
-    private let categoryTableView: UITableView = {
+    private lazy var categoryTableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.rowHeight = 60
+        table.rowHeight = 80
         table.backgroundColor = .white
+        table.dataSource = self
+        table.delegate = self
+        table.separatorInset = .zero
         table.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.id)
         return table
     }()
@@ -27,7 +30,7 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(viewModel.categories)
+        
         
         //setups
         setupSuperView()
@@ -57,14 +60,30 @@ class CategoryViewController: UIViewController {
 
 }
 
+
+//MARK: DataSource
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.id) as? CategoryTableViewCell {
+            
+            cell.mainImage.backgroundColor = .red
+            cell.nameCategoriesLabel.text = "Categories"
+            
+            return cell
+        }
         return UITableViewCell()
     }
     
     
+}
+
+//MARK: Delegate
+extension CategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(viewModel.showNextController(), animated: true)
+    }
 }
