@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class CategoryViewController: UIViewController {
     var viewModel = CategoryViewModel()
@@ -76,6 +77,16 @@ extension CategoryViewController: UITableViewDataSource {
             let categories = viewModel.categories[indexPath.row]
             
             cell.nameCategoriesLabel.text = categories.nameString
+            if let url = URL(string: categories.imageString) {
+                cell.mainImage.sd_setImage(with: url, completed: nil)
+                return cell
+            }
+            if let url = URL(string: "https://blackstarshop.ru/image/catalog/style/modile/acc_cat.png") {
+                cell.mainImage.contentMode = .scaleAspectFit
+                cell.mainImage.sd_setImage(with: url, completed: nil)
+                
+                return cell
+            }
             
             return cell
         }

@@ -31,7 +31,7 @@ struct CategoryGetModel {
                            !main.value.name.isEmpty,
                            !main.value.subcategories.isEmpty {
                             
-                            let category = Category(nameString: main.value.name, imageString: main.value.image, subCategories: main.value.subcategories)
+                            let category = Category(nameString: main.value.name, imageString: "https://blackstarshop.ru/\(main.value.image)", subCategories: main.value.subcategories)
                             getCategories.append(category)
                             
                         }
