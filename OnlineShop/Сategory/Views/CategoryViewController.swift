@@ -30,9 +30,7 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.categoryTableView = categoryTableView
-        
-        viewModel.updateCategories()
-        print(viewModel.categories)
+
         //setups
         setupSuperView()
         setupNavBar()
@@ -40,6 +38,10 @@ class CategoryViewController: UIViewController {
         //constraints
         setCategoryTableViewConstraints()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.getCategories()
     }
     
     //MARK: Setups
@@ -65,14 +67,15 @@ class CategoryViewController: UIViewController {
 //MARK: DataSource
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.id) as? CategoryTableViewCell {
             
-            cell.mainImage.backgroundColor = .red
-            cell.nameCategoriesLabel.text = "Categories"
+            let categories = viewModel.categories[indexPath.row]
+            
+            cell.nameCategoriesLabel.text = categories.nameString
             
             return cell
         }

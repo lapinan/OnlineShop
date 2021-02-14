@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ProgressHUD
 
 class CategoryViewModel {
     private var model = CategoryGetModel()
@@ -14,14 +15,17 @@ class CategoryViewModel {
     
     weak var categoryTableView: UITableView?
 
-    var categories: [CategoryGetModel.Category] { return model.categories }
+    var categories: [CategoryGetModel.Category] = []
     
-    func updateCategories() {
-        model.getCategories { array in
+    func getCategories() {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        model.getCategories { cat in
             
-            print(array)
+            self.categories = cat
             
             self.categoryTableView?.reloadData()
+            ProgressHUD.dismiss()
         }
     }
     

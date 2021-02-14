@@ -9,8 +9,6 @@ import Foundation
 
 struct CategoryGetModel {
     
-    var categories: [Category] = []
-    
     mutating func getCategories(completion: @escaping ([Category]) -> () ) {
         
         typealias categoriesTypealias = [String: CategoryValue]
