@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct SubCategoriesModel {
+    func showProductCards() {
+        
+    }
+}

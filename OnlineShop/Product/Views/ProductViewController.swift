@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import ProgressHUD
 
 class ProductViewController: UIViewController {
-
+    
     //MARK: Views
     private let layout = UICollectionViewLayout()
     private lazy var productCollectionView: UICollectionView = {
@@ -22,12 +23,21 @@ class ProductViewController: UIViewController {
         return collection
     }()
     
+    var idCard = ""
+    
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         
         setProductCollectionViewConstraints()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let viewModel = ProductViewModel(idCard: idCard)
+        
+        viewModel.getProductCards()
     }
     
     //MARK: Constraints
@@ -42,13 +52,13 @@ class ProductViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
+    
 }
 
 //MARK: DataSource
 extension ProductViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
