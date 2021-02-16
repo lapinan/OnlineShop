@@ -60,6 +60,8 @@ extension SubCategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.id) as? CategoryTableViewCell {
             
+            cell.backgroundColor = .white
+            
             cell.nameCategoriesLabel.text = subCategories[indexPath.row].name
             if subCategories[indexPath.row].iconImage == "" {
                 cell.mainImage.sd_setImage(with: URL(string: "https://blackstarshop.ru/image/catalog/style/modile/acc_cat.png"), completed: nil)
@@ -81,4 +83,8 @@ extension SubCategoryViewController: UITableViewDataSource {
 }
 
 //MARK
-extension SubCategoryViewController:  UITableViewDelegate { }
+extension SubCategoryViewController:  UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}

@@ -154,6 +154,8 @@ extension BasketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.id) as? BasketTableViewCell {
             
+            cell.backgroundColor = .white
+            
             cell.productImageView.backgroundColor = .red
             cell.productNameLabel.text = "test product name"
             cell.productSizeLabel.text = "Размер: S"

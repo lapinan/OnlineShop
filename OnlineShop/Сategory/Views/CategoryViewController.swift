@@ -80,6 +80,8 @@ extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.id) as? CategoryTableViewCell {
             
+            cell.backgroundColor = .white
+            
             let categories = viewModel.categories[indexPath.row]
             
             cell.nameCategoriesLabel.text = categories.nameString
@@ -106,5 +108,6 @@ extension CategoryViewController: UITableViewDataSource {
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(viewModel.showNextController(subCategory: viewModel.categories[indexPath.row].subCategories), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
