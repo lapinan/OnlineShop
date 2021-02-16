@@ -12,7 +12,6 @@ import ProgressHUD
 
 class CategoryViewController: UIViewController {
     var viewModel = CategoryViewModel()
-
     
     //MARK: Views
     private lazy var categoryTableView: UITableView = {
@@ -106,6 +105,6 @@ extension CategoryViewController: UITableViewDataSource {
 //MARK: Delegate
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(viewModel.showNextController(), animated: true)
+        navigationController?.pushViewController(viewModel.showNextController(subCategory: viewModel.categories[indexPath.row].subCategories), animated: true)
     }
 }

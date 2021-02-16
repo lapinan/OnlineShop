@@ -14,6 +14,7 @@ struct CategoryGetModel {
         typealias categoriesTypealias = [String: CategoryValue]
         
         var getCategories: [Category] = []
+        var subCaregories: [Subcategory] = []
         
         let urlString = "https://blackstarshop.ru/index.php?route=api/v1/categories"
         if let url = URL(string: urlString) {
@@ -31,7 +32,14 @@ struct CategoryGetModel {
                            !main.value.name.isEmpty,
                            !main.value.subcategories.isEmpty {
                             
-                            let category = Category(nameString: main.value.name, imageString: "https://blackstarshop.ru/\(main.value.image)", subCategories: main.value.subcategories)
+                            for subCat in main.value.subcategories {
+                                if subCat.type == TypeEnum.category,
+                                   !subCat.name.isEmpty {
+                                    subCaregories.append(Subcategory(id: subCat.id, iconImage: subCat.iconImage, sortOrder: subCat.sortOrder, name: subCat.name, type: subCat.type))
+                                }
+                            }
+                            
+                            let category = Category(nameString: main.value.name, imageString: "https://blackstarshop.ru/\(main.value.image)", subCategories: subCaregories)
                             getCategories.append(category)
                             
                         }
@@ -50,8 +58,9 @@ struct CategoryGetModel {
         }
     }
     
-    func showSubCategories() -> SubCategoryViewController {
-        let vc = SubCategoryViewController()        
+    func showSubCategories(subCategory: [Subcategory]) -> SubCategoryViewController {
+        let vc = SubCategoryViewController()
+        vc.subCategories = subCategory
         return vc
     }
     
