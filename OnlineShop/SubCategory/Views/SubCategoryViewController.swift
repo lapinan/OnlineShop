@@ -11,6 +11,7 @@ import SDWebImage
 import ProgressHUD
 
 class SubCategoryViewController: UIViewController {
+    let viewModel = SubCategoryViewModel()
     
     //MARK: Views
     private lazy var subCategoryTableView: UITableView = {
@@ -86,5 +87,7 @@ extension SubCategoryViewController: UITableViewDataSource {
 extension SubCategoryViewController:  UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = viewModel.showNextVC(idCard: subCategories[indexPath.row].id.getString())
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

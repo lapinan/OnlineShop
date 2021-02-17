@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+class SubCategoryViewModel {
+    private let model = SubCategoriesModel()
+    
+    //MARK: Intent(s)
+    func showNextVC(idCard: String) -> ProductViewController {
+        return model.showProductCards(idCard: idCard)
+    }
+}

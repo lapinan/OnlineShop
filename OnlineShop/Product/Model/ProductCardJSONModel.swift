@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct CardModel: Codable {
-    let images: [String]
-    let mainImage: String
-    let name: String
-    let price: String
-    let description: String
-    let sizes: [String]
-    let colorName: String
-}
-
 struct CardsProductModel: Codable {
     let name: String
     let englishName: String
