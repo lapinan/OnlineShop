@@ -114,8 +114,8 @@ class CardViewController: UIViewController {
     }()
     private lazy var sizeView: UIView = {
         let view = UIView()
-        view.addSubview(sizeTableView)
-        view.addSubview(colorTableView)
+//        view.addSubview(sizeTableView)
+//        view.addSubview(colorTableView)
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -134,6 +134,7 @@ class CardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         
         setSizeViewConstraints()
         setupNavBar()
@@ -166,7 +167,11 @@ class CardViewController: UIViewController {
         }
     }
     private func showSubView() {
-        
+        sizeView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.height.equalTo(100)
+        }
     }
     
     //MARK: Actions
@@ -174,6 +179,7 @@ class CardViewController: UIViewController {
     private func addInBasket() {
         if !isShowSizeView {
             showSubView()
+            isShowSizeView = !isShowSizeView
         }
     }
     
