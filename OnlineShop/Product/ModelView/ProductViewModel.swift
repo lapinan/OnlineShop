@@ -26,8 +26,13 @@ class ProductViewModel {
             
             self.products = cards
             self.collectionView?.reloadData()
-            ProgressHUD.dismiss()
+            DispatchQueue.main.async {
+                ProgressHUD.dismiss()
+            }
         }
+    }
+    func showNextVC(card: ProductModel.Card) -> CardViewController {
+        return model.showNextController(card: card)
     }
     
     init(idCard: String) {

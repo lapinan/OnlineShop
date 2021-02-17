@@ -29,6 +29,7 @@ class ProductViewController: UIViewController {
     }()
     
     var idCard = ""
+    var isShowed = false
     
     //MARK: Override
     override func viewDidLoad() {
@@ -41,7 +42,10 @@ class ProductViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.collectionView = productCollectionView
-        viewModel.getProductCards()
+        if !isShowed {
+            viewModel.getProductCards()
+            isShowed = true
+        }
     }
     
     //MARK: Constraints
@@ -100,4 +104,8 @@ extension ProductViewController: UICollectionViewDelegateFlowLayout {
 
 
 //MARK: Delgate
-extension ProductViewController: UICollectionViewDelegate { }
+extension ProductViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(viewModel.showNextVC(card: viewModel.products[indexPath.row]), animated: true)
+    }
+}

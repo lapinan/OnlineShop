@@ -9,6 +9,17 @@ import Foundation
 
 struct ProductModel {
     
+    func showNextController(card: Card) -> CardViewController {
+        let vc = CardViewController()
+        
+        vc.imagesString = card.imagesString
+        vc.descriptionString = card.descriptionString
+        vc.priceString = card.priceString
+        vc.nameString = card.nameString
+
+        return vc
+    }
+    
     func getProducts(idCard: String, completion: @escaping ([Card]) -> () ) {
         typealias cardModel = [String: CardsProductModel]
         
@@ -40,7 +51,7 @@ struct ProductModel {
                         for size in card.value.offers {
                             sizes.append(size.size)
                         }
-                        let card = Card(mainImageString: card.value.mainImage, imagesString: images, priceString: String(card.value.price.dropLast(5)), descriptionString: card.value.description, sizesString: sizes, colorNameString: card.value.colorName)
+                        let card = Card(nameString: card.value.name, mainImageString: card.value.mainImage, imagesString: images, priceString: String(card.value.price.dropLast(5)), descriptionString: card.value.description, sizesString: sizes, colorNameString: card.value.colorName)
                         cards.append(card)
                     }
                 }
@@ -54,6 +65,7 @@ struct ProductModel {
     }
     
     struct Card {
+        let nameString: String
         let mainImageString: String
         let imagesString: [String]
         let priceString: String
