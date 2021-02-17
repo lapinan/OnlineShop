@@ -34,7 +34,7 @@ class ProductViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
+        
         setupView()
         
         setProductCollectionViewConstraints()
@@ -49,9 +49,6 @@ class ProductViewController: UIViewController {
     }
     
     //MARK: Constraints
-    private func setupNavBar() {
-        navigationItem.title = "Товары"
-    }
     private func setupView() {
         view.backgroundColor = .white
     }

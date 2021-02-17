@@ -27,6 +27,12 @@ class CardViewController: UIViewController {
         colletion.register(ImagesCollectionViewCell.self, forCellWithReuseIdentifier: ImagesCollectionViewCell.id)
         return colletion
     }()
+    private let pageControl: UIPageControl = {
+        let page = UIPageControl()
+        page.translatesAutoresizingMaskIntoConstraints = false
+        page.currentPageIndicatorTintColor = UIColor(red: 0, green: 0.784, blue: 0.325, alpha: 1)
+        return page
+    }()
     private let nameProductLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +81,7 @@ class CardViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 13)
         button.titleLabel?.textColor = .white
         button.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
+        button.addTarget(self, action: #selector(addInBasket), for: .touchUpInside)
         return button
     }()
     private let descriptionLabel: UILabel = {
@@ -87,19 +94,49 @@ class CardViewController: UIViewController {
         label.font = .systemFont(ofSize: 16)
         return label
     }()
+    private lazy var colorTableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.delegate = self
+        table.dataSource = self
+        table.backgroundColor = .white
+        table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
+        return table
+    }()
+    private lazy var sizeTableView: UITableView = {
+       let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.delegate = self
+        table.dataSource = self
+        table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
+        table.backgroundColor = .white
+        return table
+    }()
+    private lazy var sizeView: UIView = {
+        let view = UIView()
+        view.addSubview(sizeTableView)
+        view.addSubview(colorTableView)
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     var imagesString: [String] = []
     var priceString: String = ""
     var descriptionString: String = ""
     var nameString: String = ""
+    var sizesString: [String] = []
+    var colorString: String = ""
     
+    var isShowSizeView = false
     
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-
+        setSizeViewConstraints()
+        setupNavBar()
         setAllText()
         setImagesCollectionViewConstraints()
         setNameProductLabelConstraints()
@@ -107,6 +144,7 @@ class CardViewController: UIViewController {
         setPriceViewConstraints()
         setInBasketButtonConstraints()
         setDescriptionLabelConstratins()
+        setPageControlConsstraints()
     }
     
     private func setAllText() {
@@ -114,8 +152,42 @@ class CardViewController: UIViewController {
         descriptionLabel.text = descriptionString
         priceLabel.text = priceString
     }
+    private func setupNavBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    private func hideSizeView() {
+        sizeView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(0)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+    private func showSubView() {
+        
+    }
+    
+    //MARK: Actions
+    @objc
+    private func addInBasket() {
+        if !isShowSizeView {
+            showSubView()
+        }
+    }
     
     //MARK: Constraints
+    private func setPageControlConsstraints() {
+        view.addSubview(pageControl)
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(20)
+            make.height.equalTo(10)
+            make.bottom.equalTo(imagesCollectionView.snp.bottom).inset(10)
+        }
+    }
+    
     private func setImagesCollectionViewConstraints() {
         view.addSubview(imagesCollectionView)
         imagesCollectionView.snp.makeConstraints { make in
@@ -186,12 +258,21 @@ class CardViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(10)
         }
     }
+    private func setSizeViewConstraints() {
+        view.addSubview(sizeView)
+         hideSizeView()
+    }
 }
 
 //MARK: DataSource
 extension CardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesString.count
+        let count = imagesString.count
+        
+        pageControl.numberOfPages = count
+        pageControl.isHidden = !(count > 1)
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -206,6 +287,15 @@ extension CardViewController: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
 }
+extension CardViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
 
 //MARK: FlowLayout
 extension CardViewController: UICollectionViewDelegateFlowLayout {
@@ -215,3 +305,18 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: Delegate
+extension CardViewController: UITableViewDelegate { }
+
+extension CardViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+
+
+}
