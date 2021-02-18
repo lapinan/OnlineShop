@@ -100,6 +100,7 @@ class CardViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.backgroundColor = .white
+        table.separatorInset = .zero
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         return table
     }()
@@ -108,14 +109,15 @@ class CardViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
+        table.separatorInset = .zero
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         table.backgroundColor = .white
         return table
     }()
     private lazy var sizeView: UIView = {
         let view = UIView()
-//        view.addSubview(sizeTableView)
-//        view.addSubview(colorTableView)
+        view.addSubview(sizeTableView)
+        view.addSubview(colorTableView)
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -134,8 +136,6 @@ class CardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        
         
         setupNavBar()
         setAllText()
@@ -191,7 +191,15 @@ class CardViewController: UIViewController {
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
                 make.height.equalTo(self.view.frame.height * 0.25)
             }
+            self.colorTableView.snp.makeConstraints { make in
+                make.left.bottom.top.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.5)
+            }
             self.view.layoutIfNeeded()
+            self.sizeTableView.snp.makeConstraints { make in
+                make.right.top.bottom.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(0.5)
+            }
         }, completion: nil)
     }
     
