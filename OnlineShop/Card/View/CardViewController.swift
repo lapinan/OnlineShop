@@ -136,7 +136,7 @@ class CardViewController: UIViewController {
         view.backgroundColor = .white
         
         
-        setSizeViewConstraints()
+        
         setupNavBar()
         setAllText()
         setImagesCollectionViewConstraints()
@@ -146,6 +146,7 @@ class CardViewController: UIViewController {
         setInBasketButtonConstraints()
         setDescriptionLabelConstratins()
         setPageControlConsstraints()
+        setSizeViewConstraints()
     }
     
     private func setAllText() {
@@ -157,6 +158,8 @@ class CardViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        
+        navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
     private func hideSizeView() {
@@ -167,10 +170,13 @@ class CardViewController: UIViewController {
         }
     }
     private func showSubView() {
-        sizeView.snp.updateConstraints { make in
-            make.left.right.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.height.equalTo(100)
+        UIView.animate(withDuration: 1) {
+            self.sizeView.snp.updateConstraints { make in
+                make.left.right.equalToSuperview()
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+                make.height.equalTo(100)
+                
+            }
         }
     }
     
@@ -178,7 +184,6 @@ class CardViewController: UIViewController {
     @objc
     private func addInBasket() {
         if !isShowSizeView {
-            print("tapped")
             showSubView()
             isShowSizeView = !isShowSizeView
         }

@@ -30,7 +30,7 @@ class BasketTableViewCell: UITableViewCell {
         label.textColor = .black
         return label
     }()
-    private let trashIcon: UIButton = {
+    let trashIcon: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "trash_icon"), for: .normal)
@@ -68,6 +68,7 @@ class BasketTableViewCell: UITableViewCell {
     }()
     
     
+
     //MARK: Constriants
     private func setProductImageViewConstraints() {
         addSubview(productImageView)

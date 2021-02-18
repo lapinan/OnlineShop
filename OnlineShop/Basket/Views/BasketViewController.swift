@@ -78,6 +78,12 @@ class BasketViewController: UIViewController {
         setFullPriceViewConstraints()
         setProductTableViewConstraints()
     }
+    
+    //MARK: Actions
+    @objc
+    private func deleteProduct() {
+        print("tapped me basket")
+    }
 
     //MARK: Constraints
     private func setupNavBar() {
@@ -162,6 +168,8 @@ extension BasketViewController: UITableViewDataSource {
             cell.productColorLabel.text = "Цвет: белый"
             cell.productPriceLabel.text = "2000руб."
             
+            cell.trashIcon.addTarget(self, action: #selector(deleteProduct), for: .touchUpInside)
+            
             return cell
         }
         return UITableViewCell()
@@ -169,4 +177,8 @@ extension BasketViewController: UITableViewDataSource {
 }
 
 //MARK: Delegate
-extension BasketViewController: UITableViewDelegate { }
+extension BasketViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
