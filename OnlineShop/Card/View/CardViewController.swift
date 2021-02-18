@@ -149,6 +149,15 @@ class CardViewController: UIViewController {
         setSizeViewConstraints()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        hideSizeView()
+    }
+    
+    
+    
+    
+    
+    
     private func setAllText() {
         nameProductLabel.text = nameString
         descriptionLabel.text = descriptionString
@@ -163,21 +172,27 @@ class CardViewController: UIViewController {
     }
     
     private func hideSizeView() {
-        sizeView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(0)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        if isShowSizeView {
+            UIView.animate(withDuration: 0.2) {
+                self.sizeView.snp.updateConstraints { make in
+                    make.left.right.equalToSuperview()
+                    make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+                    make.height.equalTo(0)
+                }
+                self.view.layoutIfNeeded()
+            }
+            isShowSizeView = !isShowSizeView
         }
     }
     private func showSubView() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
             self.sizeView.snp.updateConstraints { make in
                 make.left.right.equalToSuperview()
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-                make.height.equalTo(100)
-                
+                make.height.equalTo(self.view.frame.height * 0.25)
             }
-        }
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     //MARK: Actions
@@ -272,7 +287,11 @@ class CardViewController: UIViewController {
     }
     private func setSizeViewConstraints() {
         view.addSubview(sizeView)
-         hideSizeView()
+        sizeView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.height.equalTo(0)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
 }
 
