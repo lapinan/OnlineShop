@@ -167,7 +167,7 @@ class CardViewController: UIViewController {
         }
     }
     private func showSubView() {
-        sizeView.snp.makeConstraints { make in
+        sizeView.snp.updateConstraints { make in
             make.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(100)
@@ -178,6 +178,7 @@ class CardViewController: UIViewController {
     @objc
     private func addInBasket() {
         if !isShowSizeView {
+            print("tapped")
             showSubView()
             isShowSizeView = !isShowSizeView
         }
