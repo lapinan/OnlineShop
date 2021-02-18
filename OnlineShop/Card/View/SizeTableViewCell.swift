@@ -19,6 +19,7 @@ class SizeTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.1
+        label.textColor = .black
         label.font = .systemFont(ofSize: 17)
         return label
     }()
@@ -42,15 +43,16 @@ class SizeTableViewCell: UITableViewCell {
     private func setImageViewConstraints() {
         addSubview(setImageView)
         setImageView.snp.makeConstraints { make in
-            make.height.width.equalTo(24)
-            make.right.equalToSuperview().inset(16)
+            make.right.equalToSuperview().inset(10)
+            make.width.equalToSuperview().multipliedBy(0.1)
+            make.height.equalTo(setImageView.snp.width)
             make.centerY.equalToSuperview()
         }
     }
     private func setNameLabelConstraints() {
         addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.left.top.bottom.equalToSuperview().inset(16)
+            make.left.top.bottom.equalToSuperview().inset(10)
             make.right.equalTo(setImageView.snp.left)
         }
     }

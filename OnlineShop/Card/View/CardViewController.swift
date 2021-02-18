@@ -101,6 +101,8 @@ class CardViewController: UIViewController {
         table.dataSource = self
         table.backgroundColor = .white
         table.separatorInset = .zero
+        table.isScrollEnabled = false
+        table.rowHeight = UIScreen.main.bounds.height * 0.25 / CGFloat(sizesString.count)
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         return table
     }()
@@ -108,8 +110,10 @@ class CardViewController: UIViewController {
        let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
+        table.rowHeight = UIScreen.main.bounds.height * 0.25 / CGFloat(sizesString.count)
         table.dataSource = self
         table.separatorInset = .zero
+        table.isScrollEnabled = false
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         table.backgroundColor = .white
         return table
@@ -129,6 +133,7 @@ class CardViewController: UIViewController {
     var nameString: String = ""
     var sizesString: [String] = []
     var colorString: String = ""
+    var setSize = ""
     
     var isShowSizeView = false
     
@@ -328,10 +333,32 @@ extension CardViewController: UICollectionViewDataSource {
 }
 extension CardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if tableView == sizeTableView {
+            return sizesString.count
+        }
+        
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SizeTableViewCell.id) as? SizeTableViewCell {
+            
+            if tableView == colorTableView {
+                cell.nameLabel.text = colorString
+                cell.setImageView.image = UIImage(named: "accept_icon")
+            }
+            if tableView == sizeTableView {
+                cell.nameLabel.text = sizesString[indexPath.row]
+                if setSize == sizesString[indexPath.row] {
+                    cell.setImageView.image = UIImage(named: "accept_icon")
+                }
+            }
+            
+            cell.backgroundColor = .white
+            
+            return cell
+        }
+        
         return UITableViewCell()
     }
 }
@@ -344,7 +371,9 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: Delegate
-extension CardViewController: UITableViewDelegate { }
+extension CardViewController: UITableViewDelegate {
+
+}
 
 extension CardViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

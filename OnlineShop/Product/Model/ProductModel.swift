@@ -16,6 +16,8 @@ struct ProductModel {
         vc.descriptionString = card.descriptionString
         vc.priceString = card.priceString
         vc.nameString = card.nameString
+        vc.colorString = card.colorNameString
+        vc.sizesString = card.sizesString
 
         return vc
     }
