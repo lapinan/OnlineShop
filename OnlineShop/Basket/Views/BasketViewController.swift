@@ -88,7 +88,13 @@ class BasketViewController: UIViewController {
         viewModel.showBasket()
     }
     
+
+    
     //MARK: Actions
+    @objc
+    private func deleteAllInBasket() {
+        viewModel.deleteAllInBasket()
+    }
     @objc
     private func deleteProduct(_ sender: UIButton) {
         print("tapped me basket")
@@ -97,6 +103,7 @@ class BasketViewController: UIViewController {
     //MARK: Constraints
     private func setupNavBar() {
         navigationItem.title = "Корзина"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Очитсить", style: .done, target: self, action: #selector(deleteAllInBasket))
     }
     private func setBuyButtonConstraints() {
         view.addSubview(buyButton)

@@ -10,6 +10,7 @@ import RealmSwift
 
 struct BasketModel {
     let realm = try! Realm()
+    let realmMethods = RealmMethods()
     
     func showBasket(completion: @escaping ([BasketCard], Int) -> () ) {
         var cards: [BasketCard] = []
@@ -37,6 +38,9 @@ struct BasketModel {
         vc.priceString = price
         vc.setSize = setSize
         return vc
+    }
+    func deleteAllRealm() {
+        realmMethods.deleteAllInRealm()
     }
     
     struct BasketCard {

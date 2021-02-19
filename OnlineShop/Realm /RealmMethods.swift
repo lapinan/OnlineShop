@@ -16,4 +16,9 @@ class RealmMethods {
             realm.add(object)
         }
     }
+    func deleteAllInRealm() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
 }
