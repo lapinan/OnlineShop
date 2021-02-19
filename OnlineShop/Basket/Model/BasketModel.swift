@@ -11,8 +11,9 @@ import RealmSwift
 struct BasketModel {
     let realm = try! Realm()
     
-    func showBasket(completion: @escaping ([BasketCard]) -> () ) {
+    func showBasket(completion: @escaping ([BasketCard], Int) -> () ) {
         var cards: [BasketCard] = []
+        var fullPrice = 0
         let allCards = realm.objects(RealmlCardsInBasket.self)
         for card in allCards {
             var images = Array<String>()
@@ -21,11 +22,23 @@ struct BasketModel {
             }
             let basketCard = BasketCard(name: card.name, price: card.price, images: images, descriptino: card.descrip, setSize: card.setSize, color: card.color)
             cards.append(basketCard)
+            fullPrice += Int(card.price)!
         }
         DispatchQueue.main.async {
-            completion(cards)
+            completion(cards, fullPrice)
         }
     }
+    func showNextVC(name: String, description: String, price: String, images: [String], color: String, setSize: String ) -> CardViewController {
+        let vc = CardViewController()
+        vc.colorString = color
+        vc.descriptionString = description
+        vc.imagesString = images
+        vc.nameString = name
+        vc.priceString = price
+        vc.setSize = setSize
+        return vc
+    }
+    
     struct BasketCard {
         let name: String
         let price: String

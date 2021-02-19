@@ -71,7 +71,9 @@ class BasketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.tableView = productTableView
+        viewModel.priceLabel = totalPriceLabel
         viewModel.showBasket()
+        print("LOADING - -- - - - - - -- - - - - - - - - - - - - - -- -")
         //View
         view.backgroundColor = .white
         
@@ -183,5 +185,7 @@ extension BasketViewController: UITableViewDataSource {
 extension BasketViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let card = viewModel.cards[indexPath.row]
+        navigationController?.pushViewController(viewModel.showNextVC(name: card.name, description: card.descriptino, price: card.price, images: card.images, color: card.color, setSize: card.setSize), animated: true)
     }
 }
