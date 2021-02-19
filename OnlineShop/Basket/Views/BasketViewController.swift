@@ -70,10 +70,8 @@ class BasketViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.tableView = productTableView
-        viewModel.priceLabel = totalPriceLabel
-        viewModel.showBasket()
-        print("LOADING - -- - - - - - -- - - - - - - - - - - - - - -- -")
+  
+        
         //View
         view.backgroundColor = .white
         
@@ -82,6 +80,12 @@ class BasketViewController: UIViewController {
         setBuyButtonConstraints()
         setFullPriceViewConstraints()
         setProductTableViewConstraints()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.tableView = productTableView
+        viewModel.priceLabel = totalPriceLabel
+        viewModel.showBasket()
     }
     
     //MARK: Actions
