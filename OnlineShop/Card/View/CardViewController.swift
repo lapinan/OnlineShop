@@ -11,6 +11,7 @@ import SDWebImage
 
 
 class CardViewController: UIViewController {
+    let viewModel = CardViewModel()
 
     //MARK: Views
     private let layout = UICollectionViewFlowLayout()
@@ -212,14 +213,7 @@ class CardViewController: UIViewController {
             showSubView()
             isShowSizeView = !isShowSizeView
         } else {
-            let objcRealm = CardRealm()
-            objcRealm.color = colorString
-            objcRealm.name = nameString
-            objcRealm.size = setSize
-            objcRealm.price = priceString
-            for image in imagesString {
-                objcRealm.images.append(image)
-            }
+            viewModel.saveInRealm(name: nameString, price: priceString, images: imagesString, setSize: setSize, color: colorString)
         }
     }
     

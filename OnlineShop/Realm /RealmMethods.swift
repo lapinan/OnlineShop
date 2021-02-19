@@ -1,5 +1,5 @@
 //
-//  CardModel.swift
+//  RealmMethods.swift
 //  OnlineShop
 //
 //  Created by Андрей Лапин on 19.02.2021.
@@ -7,18 +7,13 @@
 
 import Foundation
 import RealmSwift
-import Realm
 
-struct CardModel {
+class RealmMethods {
+    let realm = try! Realm()
     
-    let realm = try Realm()
-    
-    
-    func saveRealm(objc: Object) {
+    func saveInRealm(with object: Object) {
         try! realm.write {
-            realm.add(objc)
+            realm.add(object)
         }
     }
-    
-    
 }

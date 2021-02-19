@@ -13,14 +13,14 @@
 		AD07BCE325D937CF00530797 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BCE225D937CF00530797 /* BasketTableViewCell.swift */; };
 		AD10A48E25D9B126008F6505 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10A48D25D9B126008F6505 /* ProductViewController.swift */; };
 		AD10A49125D9B286008F6505 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10A49025D9B286008F6505 /* ProductCollectionViewCell.swift */; };
-		AD1B0BA325DFD31500B06294 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1B0BA225DFD31500B06294 /* CardViewModel.swift */; };
-		AD1B0BA725DFD40600B06294 /* CardRealmModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */; };
 		AD1EB0EE25D811E3003CC538 /* CategoryGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0ED25D811E3003CC538 /* CategoryGetModel.swift */; };
 		AD1EB0F125D81221003CC538 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0F025D81221003CC538 /* CategoryModel.swift */; };
 		AD1EB0F825D81CD9003CC538 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */; };
 		AD31445125DCD69E00AA34C9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD31445025DCD69E00AA34C9 /* CardViewController.swift */; };
 		AD31445525DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD31445425DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift */; };
-		AD45FBAD25DFE1E90064A868 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */; };
+		AD45FBB325E015940064A868 /* RalmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD45FBB225E015940064A868 /* RalmModels.swift */; };
+		AD45FBB725E0159E0064A868 /* RealmMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD45FBB625E0159E0064A868 /* RealmMethods.swift */; };
+		AD45FBBB25E017B60064A868 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD45FBBA25E017B60064A868 /* CardViewModel.swift */; };
 		AD988C0525D80FA000A09ECF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AD988C0425D80FA000A09ECF /* .gitignore */; };
 		AD9E91A525D7D5BA00C64369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E91A425D7D5BA00C64369 /* AppDelegate.swift */; };
 		AD9E91A725D7D5BA00C64369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E91A625D7D5BA00C64369 /* SceneDelegate.swift */; };
@@ -47,15 +47,14 @@
 		AD07BCE225D937CF00530797 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		AD10A48D25D9B126008F6505 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		AD10A49025D9B286008F6505 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		AD1B0BA225DFD31500B06294 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardViewModel.swift; path = ../../../../../../../../Downloads/CardViewModel.swift; sourceTree = "<group>"; };
-		AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardRealmModel .swift"; sourceTree = "<group>"; };
-		AD1B0BAA25DFD6A500B06294 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		AD1EB0ED25D811E3003CC538 /* CategoryGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGetModel.swift; sourceTree = "<group>"; };
 		AD1EB0F025D81221003CC538 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		AD31445025DCD69E00AA34C9 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		AD31445425DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
-		AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		AD45FBB225E015940064A868 /* RalmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RalmModels.swift; sourceTree = "<group>"; };
+		AD45FBB625E0159E0064A868 /* RealmMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMethods.swift; sourceTree = "<group>"; };
+		AD45FBBA25E017B60064A868 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		AD988C0425D80FA000A09ECF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AD9E91A125D7D5BA00C64369 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E91A425D7D5BA00C64369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,19 +173,9 @@
 		AD1B0B9D25DFD2F300B06294 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AD1B0BA225DFD31500B06294 /* CardViewModel.swift */,
-				AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */,
+				AD45FBBA25E017B60064A868 /* CardViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AD1B0BA925DFD6A000B06294 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				AD1B0BAA25DFD6A500B06294 /* CardModel.swift */,
-				AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */,
-			);
-			path = Realm;
 			sourceTree = "<group>";
 		};
 		AD31444E25DCD63600AA34C9 /* Card */ = {
@@ -214,6 +203,15 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AD45FBB125E015860064A868 /* Realm  */ = {
+			isa = PBXGroup;
+			children = (
+				AD45FBB225E015940064A868 /* RalmModels.swift */,
+				AD45FBB625E0159E0064A868 /* RealmMethods.swift */,
+			);
+			path = "Realm ";
 			sourceTree = "<group>";
 		};
 		AD52195D25D7F1D1007D635F /* Views */ = {
@@ -264,7 +262,7 @@
 		AD9E91A325D7D5BA00C64369 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
-				AD1B0BA925DFD6A000B06294 /* Realm */,
+				AD45FBB125E015860064A868 /* Realm  */,
 				AD31444E25DCD63600AA34C9 /* Card */,
 				AD10A48B25D9B0E4008F6505 /* Product */,
 				AD07BCDB25D926DD00530797 /* Basket */,
@@ -464,6 +462,7 @@
 			files = (
 				AD07BCE025D926FA00530797 /* BasketViewController.swift in Sources */,
 				ADC1934725D7F25C00501A71 /* CategoryTableViewCell.swift in Sources */,
+				AD45FBB725E0159E0064A868 /* RealmMethods.swift in Sources */,
 				AD9E91C525D7D72700C64369 /* CategoryViewController.swift in Sources */,
 				AD31445125DCD69E00AA34C9 /* CardViewController.swift in Sources */,
 				AD9E91C025D7D68D00C64369 /* TabBarController.swift in Sources */,
@@ -473,16 +472,15 @@
 				AD1EB0F825D81CD9003CC538 /* CategoryViewModel.swift in Sources */,
 				AD10A49125D9B286008F6505 /* ProductCollectionViewCell.swift in Sources */,
 				AD10A48E25D9B126008F6505 /* ProductViewController.swift in Sources */,
-				AD1B0BA725DFD40600B06294 /* CardRealmModel .swift in Sources */,
 				AD003E0325DD2EE500D17214 /* SizeTableViewCell.swift in Sources */,
-				AD1B0BA325DFD31500B06294 /* CardViewModel.swift in Sources */,
 				AD1EB0F125D81221003CC538 /* CategoryModel.swift in Sources */,
 				AD1EB0EE25D811E3003CC538 /* CategoryGetModel.swift in Sources */,
 				AD07BCE325D937CF00530797 /* BasketTableViewCell.swift in Sources */,
+				AD45FBB325E015940064A868 /* RalmModels.swift in Sources */,
 				AD07BCD925D9232A00530797 /* SubCategoryViewController.swift in Sources */,
 				ADEB214825DC28E000B88A5A /* ProductViewModel.swift in Sources */,
 				AD9E91A725D7D5BA00C64369 /* SceneDelegate.swift in Sources */,
-				AD45FBAD25DFE1E90064A868 /* CardViewModel.swift in Sources */,
+				AD45FBBB25E017B60064A868 /* CardViewModel.swift in Sources */,
 				ADEB213B25DC022300B88A5A /* SubCategoryModel.swift in Sources */,
 				AD31445525DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift in Sources */,
 				ADEB214225DC22F800B88A5A /* ProductModel.swift in Sources */,
