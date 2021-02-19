@@ -23,7 +23,6 @@ class ProductViewModel {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         model.getProducts(idCard: idCard) { cards in
-            
             self.products = cards
             self.collectionView?.reloadData()
             DispatchQueue.main.async {

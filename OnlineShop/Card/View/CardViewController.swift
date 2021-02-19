@@ -196,15 +196,8 @@ class CardViewController: UIViewController {
                 make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
                 make.height.equalTo(self.view.frame.height * 0.25)
             }
-            self.colorTableView.snp.makeConstraints { make in
-                make.left.bottom.top.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.5)
-            }
             self.view.layoutIfNeeded()
-            self.sizeTableView.snp.makeConstraints { make in
-                make.right.top.bottom.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.5)
-            }
+
         }, completion: nil)
     }
     
@@ -305,6 +298,14 @@ class CardViewController: UIViewController {
             make.height.equalTo(0)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
+        colorTableView.snp.makeConstraints { make in
+            make.left.top.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
+        }
+        sizeTableView.snp.makeConstraints { make in
+            make.right.top.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
+        }
     }
 }
 
@@ -372,7 +373,11 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: Delegate
 extension CardViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        setSize = sizesString[indexPath.row]
+        sizeTableView.reloadData()
+    }
 }
 
 extension CardViewController: UIScrollViewDelegate {

@@ -32,6 +32,7 @@ class SubCategoryViewController: UIViewController {
         //View
         view.backgroundColor = .white
         
+        
         //Constraints
         setSubCategoryTableViewConstraints()
         
