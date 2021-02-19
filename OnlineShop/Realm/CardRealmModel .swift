@@ -12,6 +12,6 @@ class CardRealm: Object {
     @objc dynamic var name = ""
     @objc dynamic var price = ""
     @objc dynamic var size = ""
-    @objc dynamic var image = ""
+    dynamic var images = List<String>()
     @objc dynamic var color = ""
 }

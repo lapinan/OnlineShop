@@ -20,6 +20,7 @@
 		AD1EB0F825D81CD9003CC538 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */; };
 		AD31445125DCD69E00AA34C9 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD31445025DCD69E00AA34C9 /* CardViewController.swift */; };
 		AD31445525DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD31445425DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift */; };
+		AD45FBAD25DFE1E90064A868 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */; };
 		AD988C0525D80FA000A09ECF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AD988C0425D80FA000A09ECF /* .gitignore */; };
 		AD9E91A525D7D5BA00C64369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E91A425D7D5BA00C64369 /* AppDelegate.swift */; };
 		AD9E91A725D7D5BA00C64369 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9E91A625D7D5BA00C64369 /* SceneDelegate.swift */; };
@@ -54,6 +55,7 @@
 		AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		AD31445025DCD69E00AA34C9 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		AD31445425DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		AD988C0425D80FA000A09ECF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AD9E91A125D7D5BA00C64369 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9E91A425D7D5BA00C64369 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				AD1B0BA225DFD31500B06294 /* CardViewModel.swift */,
+				AD45FBAC25DFE1E90064A868 /* CardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 		AD31444E25DCD63600AA34C9 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				AD45FBA725DFE14E0064A868 /* Model */,
 				AD1B0B9D25DFD2F300B06294 /* ViewModel */,
 				AD31444F25DCD64000AA34C9 /* View */,
 			);
@@ -203,6 +207,13 @@
 				AD003E0225DD2EE500D17214 /* SizeTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AD45FBA725DFE14E0064A868 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AD52195D25D7F1D1007D635F /* Views */ = {
@@ -471,6 +482,7 @@
 				AD07BCD925D9232A00530797 /* SubCategoryViewController.swift in Sources */,
 				ADEB214825DC28E000B88A5A /* ProductViewModel.swift in Sources */,
 				AD9E91A725D7D5BA00C64369 /* SceneDelegate.swift in Sources */,
+				AD45FBAD25DFE1E90064A868 /* CardViewModel.swift in Sources */,
 				ADEB213B25DC022300B88A5A /* SubCategoryModel.swift in Sources */,
 				AD31445525DCDA4D00AA34C9 /* ImagesCollectionViewCell.swift in Sources */,
 				ADEB214225DC22F800B88A5A /* ProductModel.swift in Sources */,

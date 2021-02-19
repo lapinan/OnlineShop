@@ -212,7 +212,14 @@ class CardViewController: UIViewController {
             showSubView()
             isShowSizeView = !isShowSizeView
         } else {
-            print("add in realm ")
+            let objcRealm = CardRealm()
+            objcRealm.color = colorString
+            objcRealm.name = nameString
+            objcRealm.size = setSize
+            objcRealm.price = priceString
+            for image in imagesString {
+                objcRealm.images.append(image)
+            }
         }
     }
     
@@ -390,7 +397,6 @@ extension CardViewController: UITableViewDelegate {
         sizeTableView.reloadData()
     }
 }
-
 extension CardViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 

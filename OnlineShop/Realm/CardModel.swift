@@ -7,12 +7,18 @@
 
 import Foundation
 import RealmSwift
+import Realm
 
 struct CardModel {
     
+    let realm = try Realm()
     
     
-        
+    func saveRealm(objc: Object) {
+        try! realm.write {
+            realm.add(objc)
+        }
+    }
     
     
 }
