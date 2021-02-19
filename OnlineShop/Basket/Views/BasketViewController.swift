@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class BasketViewController: UIViewController {
+    let viewModel = BaskeViewModel()
     
     //MARK: View
     private lazy var productTableView: UITableView = {
@@ -69,6 +70,8 @@ class BasketViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.tableView = productTableView
+        viewModel.showBasket()
         //View
         view.backgroundColor = .white
         
@@ -154,20 +157,20 @@ class BasketViewController: UIViewController {
 //MARK: DataSource
 extension BasketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.id) as? BasketTableViewCell {
             
-            cell.backgroundColor = .white
+            let card = viewModel.cards[indexPath.row]
             
-            cell.productImageView.backgroundColor = .red
-            cell.productNameLabel.text = "test product name"
-            cell.productSizeLabel.text = "Размер: S"
-            cell.productColorLabel.text = "Цвет: белый"
-            cell.productPriceLabel.text = "2000руб."
-            
+            cell.productColorLabel.text = "Цвет: \(card.color)"
+            cell.productNameLabel.text = card.name
+            cell.productPriceLabel.text = "Цена: \(card.price)руб."
+            cell.productSizeLabel.text = "Размер: \(card.setSize)"
+            cell.productImageView.sd_setImage(with: URL(string: "https://blackstarshop.ru/\(card.images[0])"), completed: nil)
+                        
             cell.trashIcon.addTarget(self, action: #selector(deleteProduct), for: .touchUpInside)
             
             return cell

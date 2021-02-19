@@ -213,7 +213,7 @@ class CardViewController: UIViewController {
             showSubView()
             isShowSizeView = !isShowSizeView
         } else {
-            viewModel.saveInRealm(name: nameString, price: priceString, images: imagesString, setSize: setSize, color: colorString)
+            viewModel.saveInRealm(name: nameString, price: priceString, images: imagesString, setSize: setSize, color: colorString, descritptino: descriptionString)
         }
     }
     

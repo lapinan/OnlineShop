@@ -13,5 +13,6 @@ class RealmlCardsInBasket: Object {
     @objc dynamic var setSize = ""
     @objc dynamic var color = ""
     @objc dynamic var price = ""
+    @objc dynamic var descrip = ""
     dynamic var images = List<String>()
 }
