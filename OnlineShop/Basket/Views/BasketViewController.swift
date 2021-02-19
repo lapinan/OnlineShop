@@ -90,7 +90,7 @@ class BasketViewController: UIViewController {
     
     //MARK: Actions
     @objc
-    private func deleteProduct() {
+    private func deleteProduct(_ sender: UIButton) {
         print("tapped me basket")
     }
 
@@ -177,7 +177,7 @@ extension BasketViewController: UITableViewDataSource {
             cell.productSizeLabel.text = "Размер: \(card.setSize)"
             cell.productImageView.sd_setImage(with: URL(string: "https://blackstarshop.ru/\(card.images[0])"), completed: nil)
                         
-            cell.trashIcon.addTarget(self, action: #selector(deleteProduct), for: .touchUpInside)
+            cell.trashIcon.addTarget(self, action: #selector(deleteProduct(_ : )), for: .touchUpInside)
             
             return cell
         }
