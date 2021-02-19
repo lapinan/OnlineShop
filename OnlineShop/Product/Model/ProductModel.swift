@@ -55,6 +55,8 @@ struct ProductModel {
                         }
                         let card = Card(nameString: card.value.name, mainImageString: card.value.mainImage, imagesString: images, priceString: String(card.value.price.dropLast(5)), descriptionString: card.value.description, sizesString: sizes, colorNameString: card.value.colorName)
                         cards.append(card)
+                        images.removeAll()
+                        sizes.removeAll()
                     }
                 }
                 DispatchQueue.main.async {

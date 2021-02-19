@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
+
 class CardViewController: UIViewController {
 
     //MARK: Views
@@ -103,6 +104,7 @@ class CardViewController: UIViewController {
         table.separatorInset = .zero
         table.isScrollEnabled = false
         table.rowHeight = UIScreen.main.bounds.height * 0.25 / CGFloat(sizesString.count)
+        table.indicatorStyle = .white
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         return table
     }()
@@ -116,6 +118,7 @@ class CardViewController: UIViewController {
         table.isScrollEnabled = false
         table.register(SizeTableViewCell.self, forCellReuseIdentifier: SizeTableViewCell.id)
         table.backgroundColor = .white
+        table.indicatorStyle = .white
         return table
     }()
     private lazy var sizeView: UIView = {
@@ -204,9 +207,12 @@ class CardViewController: UIViewController {
     //MARK: Actions
     @objc
     private func addInBasket() {
-        if !isShowSizeView {
+        if !isShowSizeView,
+           setSize.isEmpty {
             showSubView()
             isShowSizeView = !isShowSizeView
+        } else {
+            print("add in realm ")
         }
     }
     
@@ -352,6 +358,8 @@ extension CardViewController: UITableViewDataSource {
                 cell.nameLabel.text = sizesString[indexPath.row]
                 if setSize == sizesString[indexPath.row] {
                     cell.setImageView.image = UIImage(named: "accept_icon")
+                } else {
+                    cell.setImageView.image = nil
                 }
             }
             
@@ -375,7 +383,10 @@ extension CardViewController: UICollectionViewDelegateFlowLayout {
 extension CardViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        setSize = sizesString[indexPath.row]
+        if tableView == sizeTableView {
+            setSize = sizesString[indexPath.row]
+            
+        }
         sizeTableView.reloadData()
     }
 }

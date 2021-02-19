@@ -103,6 +103,7 @@ extension ProductViewController: UICollectionViewDelegateFlowLayout {
 //MARK: Delgate
 extension ProductViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(viewModel.products[indexPath.row])
         navigationController?.pushViewController(viewModel.showNextVC(card: viewModel.products[indexPath.row]), animated: true)
     }
 }

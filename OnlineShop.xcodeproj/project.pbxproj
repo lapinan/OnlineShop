@@ -13,6 +13,8 @@
 		AD07BCE325D937CF00530797 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07BCE225D937CF00530797 /* BasketTableViewCell.swift */; };
 		AD10A48E25D9B126008F6505 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10A48D25D9B126008F6505 /* ProductViewController.swift */; };
 		AD10A49125D9B286008F6505 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10A49025D9B286008F6505 /* ProductCollectionViewCell.swift */; };
+		AD1B0BA325DFD31500B06294 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1B0BA225DFD31500B06294 /* CardViewModel.swift */; };
+		AD1B0BA725DFD40600B06294 /* CardRealmModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */; };
 		AD1EB0EE25D811E3003CC538 /* CategoryGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0ED25D811E3003CC538 /* CategoryGetModel.swift */; };
 		AD1EB0F125D81221003CC538 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0F025D81221003CC538 /* CategoryModel.swift */; };
 		AD1EB0F825D81CD9003CC538 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */; };
@@ -44,6 +46,9 @@
 		AD07BCE225D937CF00530797 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		AD10A48D25D9B126008F6505 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		AD10A49025D9B286008F6505 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		AD1B0BA225DFD31500B06294 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardViewModel.swift; path = ../../../../../../../../Downloads/CardViewModel.swift; sourceTree = "<group>"; };
+		AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardRealmModel .swift"; sourceTree = "<group>"; };
+		AD1B0BAA25DFD6A500B06294 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		AD1EB0ED25D811E3003CC538 /* CategoryGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGetModel.swift; sourceTree = "<group>"; };
 		AD1EB0F025D81221003CC538 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		AD1EB0F725D81CD9003CC538 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
@@ -164,9 +169,27 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AD1B0B9D25DFD2F300B06294 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD1B0BA225DFD31500B06294 /* CardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AD1B0BA925DFD6A000B06294 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				AD1B0BAA25DFD6A500B06294 /* CardModel.swift */,
+				AD1B0BA625DFD40600B06294 /* CardRealmModel .swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		AD31444E25DCD63600AA34C9 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				AD1B0B9D25DFD2F300B06294 /* ViewModel */,
 				AD31444F25DCD64000AA34C9 /* View */,
 			);
 			path = Card;
@@ -230,6 +253,7 @@
 		AD9E91A325D7D5BA00C64369 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
+				AD1B0BA925DFD6A000B06294 /* Realm */,
 				AD31444E25DCD63600AA34C9 /* Card */,
 				AD10A48B25D9B0E4008F6505 /* Product */,
 				AD07BCDB25D926DD00530797 /* Basket */,
@@ -438,7 +462,9 @@
 				AD1EB0F825D81CD9003CC538 /* CategoryViewModel.swift in Sources */,
 				AD10A49125D9B286008F6505 /* ProductCollectionViewCell.swift in Sources */,
 				AD10A48E25D9B126008F6505 /* ProductViewController.swift in Sources */,
+				AD1B0BA725DFD40600B06294 /* CardRealmModel .swift in Sources */,
 				AD003E0325DD2EE500D17214 /* SizeTableViewCell.swift in Sources */,
+				AD1B0BA325DFD31500B06294 /* CardViewModel.swift in Sources */,
 				AD1EB0F125D81221003CC538 /* CategoryModel.swift in Sources */,
 				AD1EB0EE25D811E3003CC538 /* CategoryGetModel.swift in Sources */,
 				AD07BCE325D937CF00530797 /* BasketTableViewCell.swift in Sources */,
