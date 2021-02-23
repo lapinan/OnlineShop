@@ -141,6 +141,7 @@ class BasketTableViewCell: UITableViewCell {
         setProductColorLabelConstraints()
         setProductPriceConstratins()
         
+        
     }
     
     required init?(coder: NSCoder) {

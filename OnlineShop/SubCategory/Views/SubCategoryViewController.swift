@@ -39,7 +39,7 @@ class SubCategoryViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        ProgressHUD.dismiss()
     }
     
     //MARK: Constraints

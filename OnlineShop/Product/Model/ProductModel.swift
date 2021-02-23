@@ -43,6 +43,9 @@ struct ProductModel {
             do {
                 let json = try JSONDecoder().decode(cardModel.self, from: data)
                 for card in json {
+                    let myString = card.value.description
+                    let stringToReplace = "&nbsp;"
+                    let outputStr = myString.replacingOccurrences(of: stringToReplace, with: "")
                     if !card.value.name.isEmpty,
                        !card.value.description.isEmpty,
                        !card.value.mainImage.isEmpty {
@@ -53,7 +56,7 @@ struct ProductModel {
                         for size in card.value.offers {
                             sizes.append(size.size)
                         }
-                        let card = Card(nameString: card.value.name, mainImageString: card.value.mainImage, imagesString: images, priceString: String(card.value.price.dropLast(5)), descriptionString: card.value.description, sizesString: sizes, colorNameString: card.value.colorName)
+                        let card = Card(nameString: card.value.name, mainImageString: card.value.mainImage, imagesString: images, priceString: String(card.value.price.dropLast(5)), descriptionString: outputStr, sizesString: sizes, colorNameString: card.value.colorName)
                         cards.append(card)
                         images.removeAll()
                         sizes.removeAll()

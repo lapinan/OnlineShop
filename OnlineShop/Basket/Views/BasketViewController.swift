@@ -29,6 +29,7 @@ class BasketViewController: UIViewController {
         button.backgroundColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
         button.setTitle("Оформить заказ", for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 1)
+        button.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
         return button
     }()
     private let fullPriceView: UIView = {
@@ -88,7 +89,33 @@ class BasketViewController: UIViewController {
         viewModel.showBasket()
     }
     
+    
+    
+    private func showBuyAlert() {
+        let alert = UIAlertController(title: nil, message: "Заказ передан в доставку", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ок", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 
+    private func showDeleteAlert() {
+        let alert = UIAlertController(title: "Товар", message: "Вы точно хотите удалить товар из корзины?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+            
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(deleteAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     //MARK: Actions
     @objc
@@ -98,6 +125,10 @@ class BasketViewController: UIViewController {
     @objc
     private func deleteProduct(_ sender: UIButton) {
         print("tapped me basket")
+    }
+    @objc
+    private func buyButtonAction() {
+        showBuyAlert()
     }
 
     //MARK: Constraints
@@ -177,6 +208,8 @@ extension BasketViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: BasketTableViewCell.id) as? BasketTableViewCell {
             
             let card = viewModel.cards[indexPath.row]
+            
+            cell.trashIcon.tag = indexPath.row
             
             cell.productColorLabel.text = "Цвет: \(card.color)"
             cell.productNameLabel.text = card.name

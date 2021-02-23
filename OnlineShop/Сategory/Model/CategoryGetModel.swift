@@ -41,7 +41,7 @@ struct CategoryGetModel {
                             
                             let category = Category(nameString: main.value.name, imageString: "https://blackstarshop.ru/\(main.value.image)", subCategories: subCaregories)
                             getCategories.append(category)
-                            
+                            subCaregories.removeAll()
                         }
                     }
                     DispatchQueue.main.async {
