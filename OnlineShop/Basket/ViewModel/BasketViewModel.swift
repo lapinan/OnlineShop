@@ -9,7 +9,7 @@ import Foundation
 import ProgressHUD
 
 class BaskeViewModel {
-    private let model = BasketModel()
+    private var model = BasketModel()
     
     var cards: [BasketModel.BasketCard] = []
     var fullPrice = 0
@@ -22,6 +22,7 @@ class BaskeViewModel {
         model.showBasket { cardsBasket, fullPrice in
             self.cards = cardsBasket
             self.fullPrice = fullPrice
+            print(self.cards.count)
             self.priceLabel?.text = fullPrice > 0 ? "\(fullPrice)руб." : ""
             self.tableView?.reloadData()
         }

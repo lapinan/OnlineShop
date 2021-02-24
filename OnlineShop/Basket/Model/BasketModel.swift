@@ -12,7 +12,9 @@ struct BasketModel {
     let realm = try! Realm()
     let realmMethods = RealmMethods()
     
-    func showBasket(completion: @escaping ([BasketCard], Int) -> () ) {
+    var products: [BasketCard] = []
+    
+    mutating func showBasket(completion: @escaping ([BasketCard], Int) -> () ) {
         var cards: [BasketCard] = []
         var fullPrice = 0
         let allCards = realm.objects(RealmlCardsInBasket.self)

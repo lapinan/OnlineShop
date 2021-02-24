@@ -93,7 +93,7 @@ class BasketTableViewCell: UITableViewCell {
     }
     
     private func setTrashIconConstraints() {
-        addSubview(trashIcon)
+        contentView.addSubview(trashIcon)
         
         trashIcon.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(15)

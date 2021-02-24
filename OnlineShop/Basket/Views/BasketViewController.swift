@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class BasketViewController: UIViewController {
     let viewModel = BaskeViewModel()
+    let realm = try! Realm()
     
     //MARK: View
     private lazy var productTableView: UITableView = {
@@ -102,12 +104,20 @@ class BasketViewController: UIViewController {
     }
     
 
-    private func showDeleteAlert() {
+    private func showDeleteAlert(index: Int) {
         let alert = UIAlertController(title: "Товар", message: "Вы точно хотите удалить товар из корзины?", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
-            
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [self] action in
+            let allObjc = realm.objects(RealmlCardsInBasket.self)
+            let delteObjc = allObjc.filter { $0.name == viewModel.cards[index].name }.first
+            if let delte = delteObjc {
+                try! realm.write {
+                    realm.delete(delte)
+                }
+            }
+            self.viewModel.cards.remove(at: index)
+            self.productTableView.reloadData()
         }
         
         alert.addAction(cancelAction)
@@ -124,7 +134,7 @@ class BasketViewController: UIViewController {
     }
     @objc
     private func deleteProduct(_ sender: UIButton) {
-        print("tapped me basket")
+        showDeleteAlert(index: sender.tag)
     }
     @objc
     private func buyButtonAction() {
