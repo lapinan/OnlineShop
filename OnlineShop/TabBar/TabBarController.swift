@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TabBarController: UITabBarController {
+    let realm = try! Realm()
     
     let categoryVC =  UINavigationController(rootViewController: CategoryViewController())
     let basketVC = UINavigationController(rootViewController: BasketViewController())
     
     override func viewDidLoad() {
         setupTabBar()
+        
+        let allProductsInBasket = realm.objects(RealmlCardsInBasket.self)
+        if allProductsInBasket.count > 0 {
+            basketVC.tabBarItem.badgeValue = "\(allProductsInBasket.count)"
+        }
     }
     
     private func setupTabBar() {

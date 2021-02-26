@@ -13,6 +13,8 @@ import ProgressHUD
 class SubCategoryViewController: UIViewController {
     let viewModel = SubCategoryViewModel()
     
+    var titleNameString: String?
+    
     //MARK: Views
     private lazy var subCategoryTableView: UITableView = {
         let table = UITableView()
@@ -31,7 +33,7 @@ class SubCategoryViewController: UIViewController {
         super.viewDidLoad()
         //View
         view.backgroundColor = .white
-        
+        navigationItem.title = "\(titleNameString ?? "")"
         
         //Constraints
         setSubCategoryTableViewConstraints()
@@ -88,7 +90,7 @@ extension SubCategoryViewController: UITableViewDataSource {
 extension SubCategoryViewController:  UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = viewModel.showNextVC(idCard: subCategories[indexPath.row].id.getString())
+        let vc = viewModel.showNextVC(idCard: subCategories[indexPath.row].id.getString(), title: subCategories[indexPath.row].name)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

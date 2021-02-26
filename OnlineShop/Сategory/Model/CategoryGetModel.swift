@@ -58,9 +58,10 @@ struct CategoryGetModel {
         }
     }
     
-    func showSubCategories(subCategory: [Subcategory]) -> SubCategoryViewController {
+    func showSubCategories(subCategory: [Subcategory], title: String) -> SubCategoryViewController {
         let vc = SubCategoryViewController()
         vc.subCategories = subCategory
+        vc.titleNameString = title
         return vc
     }
     

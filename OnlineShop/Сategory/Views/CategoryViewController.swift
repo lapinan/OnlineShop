@@ -107,7 +107,7 @@ extension CategoryViewController: UITableViewDataSource {
 //MARK: Delegate
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(viewModel.showNextController(subCategory: viewModel.categories[indexPath.row].subCategories), animated: true)
+        navigationController?.pushViewController(viewModel.showNextController(subCategory: viewModel.categories[indexPath.row].subCategories, title: viewModel.categories[indexPath.row].nameString), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

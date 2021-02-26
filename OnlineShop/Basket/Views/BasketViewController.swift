@@ -107,8 +107,8 @@ class BasketViewController: UIViewController {
     private func showDeleteAlert(index: Int) {
         let alert = UIAlertController(title: "Товар", message: "Вы точно хотите удалить товар из корзины?", preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [self] action in
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive) { [self] action in
             let allObjc = realm.objects(RealmlCardsInBasket.self)
             let delteObjc = allObjc.filter { $0.name == viewModel.cards[index].name }.first
             if let delte = delteObjc {

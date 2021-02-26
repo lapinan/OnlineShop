@@ -30,7 +30,7 @@ class CategoryViewModel {
     }
     
     //MARK: Intent(s)
-    func showNextController(subCategory: [Subcategory]) -> SubCategoryViewController {
-        return model.showSubCategories(subCategory: subCategory)
+    func showNextController(subCategory: [Subcategory], title: String) -> SubCategoryViewController {
+        return model.showSubCategories(subCategory: subCategory, title: title)
     }
 }

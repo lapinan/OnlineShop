@@ -8,9 +8,10 @@
 import Foundation
 
 struct SubCategoriesModel {
-    func showProductCards(idCard: String) -> ProductViewController {
+    func showProductCards(idCard: String, title: String) -> ProductViewController {
         let vc = ProductViewController()
         vc.idCard = idCard
+        vc.nameTitleString = title
         return vc
     }
 }

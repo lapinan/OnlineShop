@@ -13,6 +13,8 @@ class ProductViewController: UIViewController {
     
     lazy var viewModel = ProductViewModel(idCard: idCard)
     
+    var nameTitleString: String?
+    
     //MARK: Views
     private let layout = UICollectionViewFlowLayout()
     private lazy var productCollectionView: UICollectionView = {
@@ -51,6 +53,7 @@ class ProductViewController: UIViewController {
     //MARK: Constraints
     private func setupView() {
         view.backgroundColor = .white
+        navigationItem.title =  "\(nameTitleString ?? "")"
     }
     
     private func setProductCollectionViewConstraints() {

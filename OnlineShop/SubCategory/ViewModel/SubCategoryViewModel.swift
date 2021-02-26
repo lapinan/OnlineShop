@@ -11,7 +11,7 @@ class SubCategoryViewModel {
     private let model = SubCategoriesModel()
     
     //MARK: Intent(s)
-    func showNextVC(idCard: String) -> ProductViewController {
-        return model.showProductCards(idCard: idCard)
+    func showNextVC(idCard: String, title: String) -> ProductViewController {
+        return model.showProductCards(idCard: idCard, title: title)
     }
 }
