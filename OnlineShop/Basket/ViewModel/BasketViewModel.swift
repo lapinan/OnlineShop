@@ -22,7 +22,6 @@ class BaskeViewModel {
         model.showBasket { cardsBasket, fullPrice in
             self.cards = cardsBasket
             self.fullPrice = fullPrice
-            print(self.cards.count)
             self.priceLabel?.text = fullPrice > 0 ? "\(fullPrice)руб." : ""
             self.tableView?.reloadData()
         }

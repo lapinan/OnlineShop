@@ -25,7 +25,7 @@ class TabBarController: UITabBarController {
     
     private func setupTabBar() {
         categoryVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "icon_store"), tag: 0)
-        
+    
         basketVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "icon_cart"), tag: 0)
         
         setViewControllers([categoryVC, basketVC], animated: true)

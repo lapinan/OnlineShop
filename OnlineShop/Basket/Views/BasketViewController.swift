@@ -73,8 +73,7 @@ class BasketViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-        
+        self.tabBarItem.badgeValue = "3"
         //View
         view.backgroundColor = .white
         
