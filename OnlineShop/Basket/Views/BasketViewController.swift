@@ -12,6 +12,7 @@ import RealmSwift
 class BasketViewController: UIViewController {
     let viewModel = BaskeViewModel()
     let realm = try! Realm()
+    weak var tabBarVC: TabBarController?
     
     //MARK: View
     private lazy var productTableView: UITableView = {
@@ -73,7 +74,7 @@ class BasketViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         //View
         view.backgroundColor = .white
         
@@ -88,6 +89,12 @@ class BasketViewController: UIViewController {
         viewModel.tableView = productTableView
         viewModel.priceLabel = totalPriceLabel
         viewModel.showBasket()
+        let all = realm.objects(RealmlCardsInBasket.self)
+        if all.count > 0 {
+            tabBarVC?.basketVC.tabBarItem.badgeValue = "\(all.count)"
+        } else {
+            tabBarVC?.basketVC.tabBarItem.badgeValue = nil
+        }
     }
     
     
@@ -118,9 +125,9 @@ class BasketViewController: UIViewController {
             self.productTableView.reloadData()
             let allProducts = realm.objects(RealmlCardsInBasket.self)
             if allProducts.count > 0 {
-                navigationController?.tabBarItem.badgeValue = "\(allProducts.count)"
+                self.tabBarVC?.basketVC.tabBarItem.badgeValue = "\(allProducts.count)"
             } else {
-                navigationController?.tabBarItem.badgeValue = nil
+                self.tabBarVC?.basketVC.tabBarItem.badgeValue = nil
             }
         }
         
