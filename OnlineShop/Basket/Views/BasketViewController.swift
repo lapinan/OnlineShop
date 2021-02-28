@@ -73,7 +73,7 @@ class BasketViewController: UIViewController {
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarItem.badgeValue = "3"
+        
         //View
         view.backgroundColor = .white
         
@@ -89,7 +89,6 @@ class BasketViewController: UIViewController {
         viewModel.priceLabel = totalPriceLabel
         viewModel.showBasket()
     }
-    
     
     
     private func showBuyAlert() {
@@ -117,6 +116,12 @@ class BasketViewController: UIViewController {
             }
             self.viewModel.cards.remove(at: index)
             self.productTableView.reloadData()
+            let allProducts = realm.objects(RealmlCardsInBasket.self)
+            if allProducts.count > 0 {
+                navigationController?.tabBarItem.badgeValue = "\(allProducts.count)"
+            } else {
+                navigationController?.tabBarItem.badgeValue = nil
+            }
         }
         
         alert.addAction(cancelAction)
@@ -130,6 +135,7 @@ class BasketViewController: UIViewController {
     @objc
     private func deleteAllInBasket() {
         viewModel.deleteAllInBasket()
+        navigationController?.tabBarItem.badgeValue = nil
     }
     @objc
     private func deleteProduct(_ sender: UIButton) {
@@ -143,7 +149,7 @@ class BasketViewController: UIViewController {
     //MARK: Constraints
     private func setupNavBar() {
         navigationItem.title = "Корзина"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Очитсить", style: .done, target: self, action: #selector(deleteAllInBasket))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Очистить", style: .done, target: self, action: #selector(deleteAllInBasket))
     }
     private func setBuyButtonConstraints() {
         view.addSubview(buyButton)

@@ -8,10 +8,13 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import RealmSwift
 
 
 class CardViewController: UIViewController {
     let viewModel = CardViewModel()
+    let tabBarVC = TabBarController()
+    let realm = try! Realm()
 
     //MARK: Views
     private let layout = UICollectionViewFlowLayout()
@@ -161,7 +164,10 @@ class CardViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hideSizeView()
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
     
     
     
@@ -214,6 +220,12 @@ class CardViewController: UIViewController {
             isShowSizeView = !isShowSizeView
         } else {
             viewModel.saveInRealm(name: nameString, price: priceString, images: imagesString, setSize: setSize, color: colorString, descritptino: descriptionString)
+            let all = realm.objects(RealmlCardsInBasket.self)
+            if all.count > 0 {
+                tabBarVC.basketVC.tabBarItem.badgeValue = "\(all.count)"
+            } 
+                
+            
         }
     }
     

@@ -17,16 +17,17 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         setupTabBar()
         
-        let allProductsInBasket = realm.objects(RealmlCardsInBasket.self)
-        if allProductsInBasket.count > 0 {
-            basketVC.tabBarItem.badgeValue = "\(allProductsInBasket.count)"
-        }
     }
     
     private func setupTabBar() {
         categoryVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "icon_store"), tag: 0)
     
+        let allObjcets = realm.objects(RealmlCardsInBasket.self)
+        
         basketVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "icon_cart"), tag: 0)
+        if allObjcets.count > 0 {
+            basketVC.tabBarItem.badgeValue = "\(allObjcets.count)"
+        }
         
         setViewControllers([categoryVC, basketVC], animated: true)
     }
