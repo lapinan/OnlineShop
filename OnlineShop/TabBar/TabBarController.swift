@@ -17,6 +17,18 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         setupTabBar()
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBadgeValue), name: .updateBadgeValue, object: nil)
+    }
+    
+    @objc
+    private func updateBadgeValue() {
+        let allObjc = realm.objects(RealmlCardsInBasket.self)
+        if allObjc.count > 0 {
+            self.basketVC.tabBarItem.badgeValue = "\(allObjc.count)"
+        } else {
+            self.basketVC.tabBarItem.badgeValue = nil
+        }
     }
     
     private func setupTabBar() {
@@ -31,4 +43,9 @@ class TabBarController: UITabBarController {
         
         setViewControllers([categoryVC, basketVC], animated: true)
     }
+}
+
+
+extension NSNotification.Name {
+    static let updateBadgeValue = Notification.Name("updateBadgeValue")
 }

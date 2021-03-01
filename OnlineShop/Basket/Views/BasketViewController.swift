@@ -12,7 +12,6 @@ import RealmSwift
 class BasketViewController: UIViewController {
     let viewModel = BaskeViewModel()
     let realm = try! Realm()
-    weak var tabBarVC: TabBarController?
     
     //MARK: View
     private lazy var productTableView: UITableView = {
@@ -89,12 +88,6 @@ class BasketViewController: UIViewController {
         viewModel.tableView = productTableView
         viewModel.priceLabel = totalPriceLabel
         viewModel.showBasket()
-        let all = realm.objects(RealmlCardsInBasket.self)
-        if all.count > 0 {
-            tabBarVC?.basketVC.tabBarItem.badgeValue = "\(all.count)"
-        } else {
-            tabBarVC?.basketVC.tabBarItem.badgeValue = nil
-        }
     }
     
     
@@ -123,12 +116,7 @@ class BasketViewController: UIViewController {
             }
             self.viewModel.cards.remove(at: index)
             self.productTableView.reloadData()
-            let allProducts = realm.objects(RealmlCardsInBasket.self)
-            if allProducts.count > 0 {
-                self.tabBarVC?.basketVC.tabBarItem.badgeValue = "\(allProducts.count)"
-            } else {
-                self.tabBarVC?.basketVC.tabBarItem.badgeValue = nil
-            }
+            NotificationCenter.default.post(name: .updateBadgeValue, object: nil)
         }
         
         alert.addAction(cancelAction)
@@ -142,7 +130,7 @@ class BasketViewController: UIViewController {
     @objc
     private func deleteAllInBasket() {
         viewModel.deleteAllInBasket()
-        navigationController?.tabBarItem.badgeValue = nil
+        NotificationCenter.default.post(name: .updateBadgeValue, object: nil)
     }
     @objc
     private func deleteProduct(_ sender: UIButton) {

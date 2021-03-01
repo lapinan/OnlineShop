@@ -220,11 +220,6 @@ class CardViewController: UIViewController {
             isShowSizeView = !isShowSizeView
         } else {
             viewModel.saveInRealm(name: nameString, price: priceString, images: imagesString, setSize: setSize, color: colorString, descritptino: descriptionString)
-            let all = realm.objects(RealmlCardsInBasket.self)
-            if all.count > 0 {
-                tabBarVC.basketVC.tabBarItem.badgeValue = "\(all.count)"
-            } 
-                
             
         }
     }

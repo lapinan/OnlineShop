@@ -25,6 +25,7 @@ class CardViewModel {
         DispatchQueue.main.async {
             self.realmMethods.saveInRealm(with: card)
             ProgressHUD.show(icon: AlertIcon.like)
+            NotificationCenter.default.post(name: .updateBadgeValue, object: nil)
         }
     }
 }
